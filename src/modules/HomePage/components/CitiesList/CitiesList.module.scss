@@ -1,0 +1,51 @@
+@use "@/styles/colors.scss" as *;
+@use "@/styles/mixins.scss" as *;
+
+.cities-list {
+  &__empty {
+    font-size: 16px;
+    color: $white;
+  }
+
+  &__list {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 0;
+
+    @include on-tablet {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    list-style-type: none;
+  }
+
+  &__delete-city-button {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+
+    border: none;
+
+    background-image: url("/icons/delete.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.1);
+    }
+  }
+}
+

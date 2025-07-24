@@ -1,0 +1,66 @@
+@use '@/styles/colors.scss' as *;
+@use '@/styles/mixins.scss' as *;
+@use '@/styles/variables.scss' as *;
+
+.home {
+  padding: $padding-mobile $padding-mobile 0;
+
+  @include on-tablet {
+    padding: $padding-tablet;
+  }
+
+  @include on-desktop {
+    padding: $padding-desktop;
+  }
+
+  &__search {
+    &-input-wrap {
+      display: flex;
+      align-items: center;
+      background-color: $secondary-background;
+      border-radius: 12px;
+      padding: 8px 12px;
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+      transition: box-shadow .3s ease, background-color .3s ease;
+    }
+
+    &-icon {
+      width: 16px;
+      height: 16px;
+      margin-right: 8px;
+      opacity: 0.6;
+    }
+
+    &-input {
+      border: none;
+      background-color: transparent;
+      width: 100%;
+      font-size: 16px;
+      color: $black;
+      outline: none;
+
+      &::placeholder {
+        color: $dark-gray;
+      }
+    }
+
+    &-input-wrap:focus-within {
+      outline: 1px solid $secondary;
+      background-color: $gray;
+    }
+  }
+
+  &__edit-button {
+    background-color: transparent;
+    border: none;
+    color: $white;
+    text-decoration: underline;
+    font-size: 16px;
+    font-weight: 300;
+    margin-block: 16px 24px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

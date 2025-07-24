@@ -1,0 +1,113 @@
+@use "@/styles/colors.scss" as *;
+@use "@/styles/mixins.scss" as *;
+
+.city-card {
+  min-height: 112px;
+  width: 100%;
+  border: 1px solid $secondary;
+  border-radius: 12px;
+  padding: 12px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  background-image: url("/card-backgrounds/sunny.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  transition: width .4s ease;
+
+  @include on-desktop {
+    min-height: 148px;
+  }
+
+  &--loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &:hover {
+    cursor: pointer;
+    border-color: $white;
+  }
+
+  &--sunny {
+    background-image: url("/card-backgrounds/sunny.webp");
+  }
+
+  &--clouds {
+    background-image: url("/card-backgrounds/cloudy.webp");
+  }
+
+  &--rain {
+    background-image: url("/card-backgrounds/rainy.webp");
+    background-position: center;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+
+  &__name {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 700;
+    color: $white;
+  }
+
+  &__country {
+    margin-block: 0 4px;
+    color: $white;
+
+  }
+
+  &__condition {
+    margin: 0;
+    text-transform: capitalize;
+    font-weight: 500;
+    color: $white;
+  }
+
+  &__footer {
+    &-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  &__refresh {
+    z-index: 10;
+    width: 24px;
+    height: 24px;
+
+    background-image: url("/icons/refresh-white.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+
+    &--black {
+      background-image: url("/icons/refresh-black.svg");
+    }
+  }
+
+  &__temperature {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 600;
+    color: $white;
+  }
+}
