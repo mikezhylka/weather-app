@@ -4,6 +4,7 @@
 
 .city-weather-page {
   padding-inline: $padding-mobile;
+  padding-bottom: 52px;
 
   @include on-tablet {
     padding-inline: $padding-tablet;
