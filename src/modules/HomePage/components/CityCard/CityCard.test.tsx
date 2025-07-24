@@ -1,6 +1,5 @@
 import * as thunks from "@/features/cities/thunks/updateCityWeatherThunk";
 import { mockCity } from "@/mocks/mockCity";
-import "@testing-library/jest-dom";
 import { fireEvent, render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import { beforeEach, describe, expect, it, vi } from "vitest";
@@ -32,17 +31,14 @@ describe("CityCard", () => {
 
   it("renders city name, country and temperature", () => {
     renderWithRouter(<CityCard city={mockCity} />);
-
-    expect(screen.getByText(/Kyiv/i)).toBeInTheDocument();
-    expect(screen.getByText(/Ukraine/i)).toBeInTheDocument();
-    expect(screen.getByText(/20°C/i)).toBeInTheDocument();
+    expect(screen.queryByText(/Kyiv/i)).not.toBeNull();
+    expect(screen.queryByText(/Ukraine/i)).not.toBeNull();
+    expect(screen.queryByText(/20°C/i)).not.toBeNull();
   });
 
   it("navigates to city details on card click", () => {
     renderWithRouter(<CityCard city={mockCity} />);
-
     fireEvent.click(screen.getByText(/Kyiv/i));
-
     expect(mockNavigate).toHaveBeenCalledWith("/1");
   });
 

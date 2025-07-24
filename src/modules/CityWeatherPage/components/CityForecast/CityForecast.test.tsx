@@ -1,6 +1,6 @@
 import { mockCity } from "@/mocks/mockCity";
 import { mockForecast } from "@/mocks/mockForecast";
-import "@testing-library/jest-dom";
+import '@testing-library/jest-dom';
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { CityForecast } from "./CityForecast";
@@ -19,22 +19,22 @@ describe("CityForecast", () => {
   it("formats hour correctly with leading zero", () => {
     render(<CityForecast currentCity={modifiedMockCity} />);
     
-    expect(screen.getAllByTestId("forecast-hour")[0]).toHaveTextContent("09");
-    expect(screen.getAllByTestId("forecast-hour")[1]).toHaveTextContent("12");
+    expect(screen.getAllByTestId("forecast-hour")[0].textContent).toBe("09");
+    expect(screen.getAllByTestId("forecast-hour")[1].textContent).toBe("12");
   });
 
   it("displays rounded temperature with degree symbol", () => {
     render(<CityForecast currentCity={modifiedMockCity} />);
     
-    expect(screen.getAllByTestId("forecast-temp")[0]).toHaveTextContent("20°");
-    expect(screen.getAllByTestId("forecast-temp")[1]).toHaveTextContent("23°");
+    expect(screen.getAllByTestId("forecast-temp")[0].textContent).toBe("20°");
+    expect(screen.getAllByTestId("forecast-temp")[1].textContent).toBe("23°");
   });
 
   it("shows weather conditions", () => {
     render(<CityForecast currentCity={modifiedMockCity} />);
     
-    expect(screen.getAllByTestId("forecast-conditions")[0]).toHaveTextContent("Clear");
-    expect(screen.getAllByTestId("forecast-conditions")[1]).toHaveTextContent("Clouds");
+    expect(screen.getAllByTestId("forecast-conditions")[0].textContent).toBe("Clear");
+    expect(screen.getAllByTestId("forecast-conditions")[1].textContent).toBe("Clouds");
   });
 
   it("handles empty forecast gracefully", () => {

@@ -38,7 +38,7 @@ describe("CitiesList", () => {
       </Provider>
     );
 
-    expect(screen.getByText("No cities added yet.")).toBeInTheDocument();
+    expect(screen.queryByText("No cities added yet.")).not.toBeNull();
   });
 
   it("displays list of cities", () => {
@@ -52,8 +52,8 @@ describe("CitiesList", () => {
 
     const cityCards = screen.getAllByTestId("city-card");
     expect(cityCards).toHaveLength(2);
-    expect(cityCards[0]).toHaveTextContent("Kyiv");
-    expect(cityCards[1]).toHaveTextContent("London");
+    expect(cityCards[0].textContent).toBe("Kyiv");
+    expect(cityCards[1].textContent).toBe("London");
   });
 
   it("shows delete buttons in edit mode", () => {
