@@ -17,8 +17,10 @@ export const CityWeatherPage = () => {
 
   const { name, weather } = currentCity || {};
   const { city } = weather;
+  const currentForecast = weather.list[0];
+
   const { sunset, sunrise } = city;
-  const { feels_like, temp, temp_max, temp_min } = weather!.list[0].main;
+  const { feels_like, temp, temp_max, temp_min } = currentForecast.main;
 
   const handleBackClick = () => {
     navigate("/");
@@ -28,10 +30,8 @@ export const CityWeatherPage = () => {
     return temperature.toFixed(0);
   };
 
-  const weatherConditions = weather!.list[0].weather[0].main;
-  const wind = weather!.list[0].wind;
-
-  const currentForecast = weather!.list[0];
+  const { weather: forecastWeather, wind } = currentForecast;
+  const weatherConditions = forecastWeather[0].main;
 
   const { visibility, main } = currentForecast;
   const { pressure, humidity } = main;
@@ -41,8 +41,7 @@ export const CityWeatherPage = () => {
       <button
         className={styles["city-weather-page__back-button"]}
         onClick={handleBackClick}
-      >
-      </button>
+      ></button>
       <div className={styles["city-weather-page__header"]}>
         <h2 className={styles["city-weather-page__city"]}>{name}</h2>
         <p className={styles["city-weather-page__conditions"]}>
